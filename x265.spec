@@ -1,11 +1,11 @@
 Summary:	Open Source H265/HEVC video encoder
 Name:		x265
-Version:	1.4
+Version:	1.6
 Release:	1
 License:	GPL v2
 Group:		Libraries
 Source0:	https://bitbucket.org/multicoreware/x265/get/%{version}.tar.gz
-# Source0-md5:	c27bee78929b7acb9fc09890f59ad191
+# Source0-md5:	3b3491aeb1ed34a09173cc3aaf08e3e4
 BuildRequires:	cmake
 BuildRequires:	yasm
 Requires:	libx265 = %{version}-%{release}
@@ -29,7 +29,7 @@ Requires:	libx265 = %{version}-%{release}
 This is the package containing the header files for x265 library.
 
 %prep
-%setup -qn multicoreware-x265-5e604833c5aa
+%setup -qn multicoreware-x265-cbeb7d8a4880
 
 %build
 cd build/linux
@@ -41,9 +41,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build/linux install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-# workaround
-%{__mv} $RPM_BUILD_ROOT{%{_prefix}/%{_pkgconfigdir},%{_pkgconfigdir}}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
